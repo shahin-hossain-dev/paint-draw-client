@@ -9,17 +9,15 @@ const Home = () => {
     if (isDarkMode) {
       document.getElementById("home").setAttribute("data-theme", "dark");
       document.getElementById("home").classList =
-        "text-white bg-[#212121] min-h-screen";
+        "text-white bg-[#212121] min-h-screen duration-200";
       localStorage.setItem("theme", "dark");
     } else {
       document.getElementById("home").setAttribute("data-theme", "light");
       document.getElementById("home").classList =
-        "text-black bg-[#ffffff] min-h-screen";
+        "text-black bg-[#ffffff] min-h-screen duration-200";
       localStorage.setItem("theme", "light");
     }
   }, [isDarkMode]);
-
-  console.log(isDarkMode);
 
   return (
     <div id="home">

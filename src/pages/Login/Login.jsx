@@ -1,24 +1,94 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navbar from "../shared/Navbar/Navbar";
-
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 const Login = () => {
+  const { googleLogin, githubLogin, userLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (password.length < 6) {
+      return setError("Password should be at least 6 characters");
+    }
+    userLogin(email, password)
+      .then((result) => {
+        if (result.user) {
+          Swal.fire({
+            title: "Login Successfully",
+            icon: "success",
+          });
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        if (error.message.includes("invalid")) {
+          setError("User Email or Password Invalid");
+        } else {
+          setError(error.message);
+        }
+      });
+  };
+
+  // handle Google login
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        if (result.user) {
+          Swal.fire({
+            title: "Login Successfully",
+            icon: "success",
+          });
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+  // handle github login
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        // console.log(result.user);
+        if (result.user) {
+          Swal.fire({
+            title: "Login Successfully",
+            icon: "success",
+          });
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   return (
     <div>
       <Navbar />
       <div className=" flex justify-center items-center px-5 md:px-0 min-h-screen  pb-5">
         <div className="card shrink-0 w-full max-w-sm shadow-2xl  border">
-          <h1 className="text-3xl mt-5 text-center font-bold ">Login now!</h1>
-          <form className="card-body  pt-0">
+          <h1 className="text-2xl font-exo mt-5 text-center font-bold  ">
+            Login now!
+          </h1>
+          <form onSubmit={handleLogin} className="card-body  pt-0">
             <div className="form-control">
               <label className="label">
                 <span className="label-text ">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="name@example.com"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -27,8 +97,10 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="input input-bordered"
+                required
               />
             </div>
 
@@ -43,16 +115,25 @@ const Login = () => {
             </Link>
           </p>
           <div className="form-control mt-6 mx-8">
-            <button className="btn btn-info text-white">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn btn-info text-white"
+            >
               <FaGoogle />
               Continue With Google
             </button>
           </div>
           <div className="form-control my-6 mx-8">
-            <button className="btn btn-neutral text-white">
+            <button
+              onClick={handleGithubLogin}
+              className="btn btn-neutral text-white"
+            >
               <FaGithub />
               Continue with Github
             </button>
+          </div>
+          <div className="mb-6 mx-8">
+            <p className="text-red-600 font-semibold text-center">{error}</p>
           </div>
         </div>
       </div>

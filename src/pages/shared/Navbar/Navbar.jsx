@@ -1,21 +1,33 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 import logoForLight from "../../../assets/logo-01.png";
 import logoForDark from "../../../assets/logo-02.png";
 import userImg from "../../../assets/user.jpg";
+import { FaPhone } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
-  const { user } = useContext(AuthContext);
-  //   const handleLogout = () => {
-  //     logout()
-  //       .then(() => {
-  //       })
-  //       .catch((error) => (error.message ));
-  //   };
+  const { user, logout } = useContext(AuthContext);
+  const [darkModeBtn, setDarkModeBtn] = useState(null);
+  const location = useLocation();
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        Swal.fire({
+          title: "Logout Successfully",
+          icon: "success",
+        });
+      })
+      .catch((error) => error.message);
+  };
   useEffect(() => {
     const theme = localStorage.getItem("theme");
+    if (!location?.pathname[1]) {
+      setDarkModeBtn(true);
+    }
   }, []);
 
   const handleDarkMood = (e) => {
@@ -39,30 +51,48 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
           <button className="border border-white p-2">BN</button>
         </div>
         <div className="flex items-center gap-5">
-          <span className="hidden md:flex">Call Now +8801676446077</span>
+          <span className="hidden md:flex">
+            <span> Hot Line: +8801676446077</span>
+          </span>
           <div className="flex items-center gap-3">
-            <img
+            {/* <img
               src={userImg}
               alt="User Avatar"
               className="rounded-full w-[40px] h-[40px]"
-            />
-            <p className="hidden md:flex">My Account</p>
+            /> */}
+            <div className="dropdown dropdown-end me-3">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost hover:bg-neutral btn-circle flex justify-center items-center  avatar tooltip tooltip-bottom"
+                data-tip={user && user?.displayName}
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="User Image"
+                    src={(user && user?.photoURL) || userImg}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <div>
-            <label className="cursor-pointer label">
-              <input
-                type="checkbox"
-                className="toggle toggle-primary"
-                onChange={(e) => handleDarkMood(e)}
-                {...isDarkMode}
-              />
-            </label>
+            {darkModeBtn && (
+              <label className="cursor-pointer label">
+                <input
+                  type="checkbox"
+                  className="toggle toggle-primary"
+                  onChange={(e) => handleDarkMood(e)}
+                  {...isDarkMode}
+                />
+              </label>
+            )}
           </div>
         </div>
       </div>
-      <div className="md:px-5">
+      <div className="md:px-5 ">
         <div className="navbar">
-          <div className="navbar-start">
+          <div className="navbar-start ">
             <div className="dropdown">
               <div tabIndex={0} role="button" className=" md:hidden">
                 <svg
@@ -100,35 +130,6 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
           <div className="navbar-end">
             {user ? (
               <div className="flex justify-center">
-                <div className="dropdown dropdown-end me-3">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost hover:bg-neutral btn-circle flex justify-center items-center  avatar tooltip tooltip-bottom"
-                    data-tip={user.displayName && user.displayName}
-                  >
-                    <div className="w-10 rounded-full">
-                      <img
-                        alt="User Image"
-                        src={(user.photoURL && user.photoURL) || userImg}
-                      />
-                    </div>
-                  </div>
-                  <ul
-                    tabIndex={0}
-                    className="mt-10 translate-x-10 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-                  >
-                    <li>
-                      <button className="justify-between ">
-                        <Link to={"/user-profile"}>User Profile</Link>
-                      </button>
-                    </li>
-
-                    <li>
-                      <button onClick={handleLogout}>Logout</button>
-                    </li>
-                  </ul>
-                </div>
                 <button onClick={handleLogout} className="btn btn-neutral">
                   Logout
                 </button>
