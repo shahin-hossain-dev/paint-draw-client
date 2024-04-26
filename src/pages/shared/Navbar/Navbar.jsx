@@ -39,7 +39,7 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
     <>
       <ActiveLink to={"/"}>Home</ActiveLink>
       <ActiveLink to={"/all-painting-items"}>All Art & Craft</ActiveLink>
-      <ActiveLink to={"/add-painting-item"}>Add Craft Item</ActiveLink>
+      <ActiveLink to={"/add-painting-craft"}>Add Craft Item</ActiveLink>
       <ActiveLink to={"/my-painting-list"}>My Art & Craft List</ActiveLink>
     </>
   );

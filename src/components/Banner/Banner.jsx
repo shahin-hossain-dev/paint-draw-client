@@ -11,6 +11,7 @@ import image3 from "../../assets/slider3.jpg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Slide } from "react-awesome-reveal";
 
 const Banner = () => {
   return (
@@ -25,8 +26,8 @@ const Banner = () => {
       }}
       navigation={true}
       pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      //   onSwiper={(swiper) => console.log(swiper)}
+      //   onSlideChange={() => console.log("slide change")}
     >
       {/* slider 1 */}
       <SwiperSlide>
@@ -37,14 +38,16 @@ const Banner = () => {
           />
           <div className="absolute top-0 left-0  lg:mt-0  h-[100%] w-[100%]  bg-gradient-to-r   from-[#00000099] to-[#00000099] ">
             <div className=" flex justify-center  text-center items-center mt-16 flex-col  h-full lg:min-h-screen px-10 md:px-16">
-              <button className="btn text-lg mb-4 px-5 ">Explore Now</button>
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-exo mb-5">
-                Explore Artistry: Shop Paintings Now!
-              </h2>
-              <p>
-                Elevate your space with our curated collection of captivating
-                paintings. Find your perfect piece today
-              </p>
+              <Slide>
+                <button className="btn text-lg mb-4 px-5 ">Explore Now</button>
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-exo mb-5">
+                  Explore Artistry: Shop Paintings Now!
+                </h2>
+                <p>
+                  Elevate your space with our curated collection of captivating
+                  paintings. Find your perfect piece today
+                </p>
+              </Slide>
             </div>
           </div>
         </div>
@@ -58,14 +61,16 @@ const Banner = () => {
           />
           <div className="absolute top-0 left-0  lg:mt-0  h-[100%] w-[100%]  bg-gradient-to-r   from-[#00000099] to-[#00000099] ">
             <div className=" flex justify-center  text-center items-center mt-16 flex-col  h-full lg:min-h-screen px-10 md:px-16">
-              <button className="btn text-lg mb-4 px-5 ">Explore Now</button>
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-exo mb-5">
-                Explore Artistry: Shop Paintings Now!
-              </h2>
-              <p>
-                Elevate your space with our curated collection of captivating
-                paintings. Find your perfect piece today
-              </p>
+              <Slide>
+                <button className="btn text-lg mb-4 px-5 ">Explore Now</button>
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-exo mb-5">
+                  Explore Artistry: Shop Paintings Now!
+                </h2>
+                <p>
+                  Elevate your space with our curated collection of captivating
+                  paintings. Find your perfect piece today
+                </p>
+              </Slide>
             </div>
           </div>
         </div>
@@ -79,14 +84,16 @@ const Banner = () => {
           />
           <div className="absolute top-0 left-0  lg:mt-0  h-[100%] w-[100%]  bg-gradient-to-r   from-[#00000099] to-[#00000099] ">
             <div className=" flex justify-center  text-center items-center mt-16 flex-col  h-full lg:min-h-screen px-10 md:px-16">
-              <button className="btn text-lg mb-4 px-5 ">Explore Now</button>
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-exo mb-5">
-                Explore Artistry: Shop Paintings Now!
-              </h2>
-              <p>
-                Elevate your space with our curated collection of captivating
-                paintings. Find your perfect piece today
-              </p>
+              <Slide>
+                <button className="btn text-lg mb-4 px-5 ">Explore Now</button>
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-exo mb-5">
+                  Explore Artistry: Shop Paintings Now!
+                </h2>
+                <p>
+                  Elevate your space with our curated collection of captivating
+                  paintings. Find your perfect piece today
+                </p>
+              </Slide>
             </div>
           </div>
         </div>
