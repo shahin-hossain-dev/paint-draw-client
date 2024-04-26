@@ -1,49 +1,63 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
-import logo from "../../../assets/logo-01.png";
+import logoForLight from "../../../assets/logo-01.png";
+import logoForDark from "../../../assets/logo-02.png";
 import userImg from "../../../assets/user.jpg";
 
-const Navbar = () => {
+const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
   const { user } = useContext(AuthContext);
-
   //   const handleLogout = () => {
   //     logout()
   //       .then(() => {
-  //         successAlert("logout");
   //       })
-  //       .catch((error) => toast.error(error.message, toastSetting));
+  //       .catch((error) => (error.message ));
   //   };
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+  }, []);
+
+  const handleDarkMood = (e) => {
+    // console.log(e.target.checked);
+    setDarkMood(!isDarkMode);
+  };
 
   const links = (
     <>
       <ActiveLink to={"/"}>Home</ActiveLink>
-      <ActiveLink to={"/all-painting-items"}>All Painting Items</ActiveLink>
-      <ActiveLink to={"/add-painting-item"}>Add Painting Item</ActiveLink>
-      <ActiveLink to={"/my-painting-list"}>My Painting List</ActiveLink>
+      <ActiveLink to={"/all-painting-items"}>All Art & Craft</ActiveLink>
+      <ActiveLink to={"/add-painting-item"}>Add Craft Item</ActiveLink>
+      <ActiveLink to={"/my-painting-list"}>My Art & Craft List</ActiveLink>
     </>
   );
   return (
-    <div className="  w-full">
-      <div className="py-3 px-5 md:px-10 bg-[#002B45] text-white  flex items-center gap-10">
+    <div className=" w-full shadow-lg">
+      <div className="py-3 px-5 md:px-10 bg-[#002B45] text-white  flex items-center justify-between gap-10">
         <div className="flex gap-3">
           <button className="border border-white p-2">US</button>
           <button className="border border-white p-2">BN</button>
         </div>
-        <span className="hidden md:flex">Call Now +8801676446077</span>
-        <div className="flex items-center gap-3">
-          <img
-            src={userImg}
-            alt=""
-            className="rounded-full w-[40px] h-[40px]"
-          />
-          <p className="hidden md:flex">My Account</p>
-        </div>
-        <div>
-          <label className="cursor-pointer label">
-            <input type="checkbox" className="toggle toggle-primary" checked />
-          </label>
+        <div className="flex items-center gap-5">
+          <span className="hidden md:flex">Call Now +8801676446077</span>
+          <div className="flex items-center gap-3">
+            <img
+              src={userImg}
+              alt="User Avatar"
+              className="rounded-full w-[40px] h-[40px]"
+            />
+            <p className="hidden md:flex">My Account</p>
+          </div>
+          <div>
+            <label className="cursor-pointer label">
+              <input
+                type="checkbox"
+                className="toggle toggle-primary"
+                onChange={(e) => handleDarkMood(e)}
+                {...isDarkMode}
+              />
+            </label>
+          </div>
         </div>
       </div>
       <div className="md:px-5">
@@ -74,7 +88,7 @@ const Navbar = () => {
               </ul>
             </div>
             <img
-              src={logo}
+              src={isDarkMode ? logoForDark : logoForLight}
               className=" w-2/3 lg:w-[200px] ms-3 lg:ms-0"
               alt=""
             />

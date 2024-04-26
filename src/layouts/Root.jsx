@@ -5,7 +5,6 @@ import Navbar from "../pages/shared/Navbar/Navbar";
 const Root = () => {
   return (
     <div>
-      <Navbar />
       <Outlet />
     </div>
   );
