@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../shared/Navbar/Navbar";
+import Swal from "sweetalert2";
 
 const AddPaintingCraft = () => {
   const handleAddCraft = (e) => {
@@ -30,7 +31,22 @@ const AddPaintingCraft = () => {
       customization,
       processingTime,
     };
-    console.log(craftItem);
+    fetch("http://localhost:5000/crafts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(craftItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Craft Item Added Successfully",
+            icon: "success",
+          });
+        }
+      });
   };
   return (
     <div>
@@ -119,6 +135,7 @@ const AddPaintingCraft = () => {
                     </label>
                     <select
                       name="rating"
+                      required
                       className="select select-bordered w-full "
                     >
                       <option value={"1"}>1</option>
@@ -150,6 +167,7 @@ const AddPaintingCraft = () => {
                   </label>
                   <select
                     name="craftCategory"
+                    required
                     className="select select-bordered w-full "
                   >
                     <option value={"Landscape Painting"}>
