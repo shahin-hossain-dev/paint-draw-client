@@ -2,10 +2,40 @@ import React from "react";
 import Navbar from "../shared/Navbar/Navbar";
 
 const AddPaintingCraft = () => {
+  const handleAddCraft = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const craftName = form.craftName.value;
+    const shortDescription = form.shortDescription.value;
+    const email = form.email.value;
+    const userName = form.userName.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const imageURL = form.imageURL.value;
+    const craftCategory = form.craftCategory.value;
+    const stockStatus = form.stockStatus.value;
+    const customization = form.customization.value;
+    const processingTime = form.processingTime.value;
+
+    const craftItem = {
+      craftName,
+      shortDescription,
+      email,
+      userName,
+      price,
+      rating,
+      imageURL,
+      craftCategory,
+      stockStatus,
+      customization,
+      processingTime,
+    };
+    console.log(craftItem);
+  };
   return (
     <div>
       <Navbar />
-      <div className=" min-h-screen w-[90%] md:w-[90%] lg:w-[85%] mx-auto border mt-5 p-5">
+      <div className=" min-h-screen w-[90%] md:w-[90%] lg:w-[85%] mx-auto border mt-5 px-0 md:p-5">
         <div className="flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-2xl font-bold text-center">
@@ -13,7 +43,7 @@ const AddPaintingCraft = () => {
             </h1>
           </div>
           <div className=" shrink-0 w-full ">
-            <form className="card-body">
+            <form onSubmit={handleAddCraft} className="card-body">
               {/* row 1 */}
               <div className="md:flex items-center gap-5">
                 <div className="form-control w-full">
@@ -22,6 +52,7 @@ const AddPaintingCraft = () => {
                   </label>
                   <input
                     type="text"
+                    name="craftName"
                     placeholder="Craft Name"
                     className="input input-bordered"
                     required
@@ -33,6 +64,7 @@ const AddPaintingCraft = () => {
                   </label>
                   <input
                     type="text"
+                    name="shortDescription"
                     placeholder="Short Description"
                     className="input input-bordered"
                     required
@@ -47,6 +79,7 @@ const AddPaintingCraft = () => {
                   </label>
                   <input
                     type="text"
+                    name="email"
                     placeholder="User Email"
                     className="input input-bordered"
                     required
@@ -58,6 +91,7 @@ const AddPaintingCraft = () => {
                   </label>
                   <input
                     type="text"
+                    name="userName"
                     placeholder="User Name"
                     className="input input-bordered"
                     required
@@ -65,14 +99,15 @@ const AddPaintingCraft = () => {
                 </div>
               </div>
               {/* row 3 */}
-              <div className="md:flex items-center gap-5 w-full">
-                <div className="md:flex gap-3 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 w-full">
+                <div className="grid grid-cols-2 gap-3 w-full">
                   <div className="form-control  w-full ">
                     <label className="label">
                       <span className="label-text">Price</span>
                     </label>
                     <input
                       type="text"
+                      name="price"
                       placeholder="Price"
                       className="input input-bordered"
                       required
@@ -82,21 +117,26 @@ const AddPaintingCraft = () => {
                     <label className="label">
                       <span className="label-text">Rating</span>
                     </label>
-                    <input
-                      type="text"
-                      placeholder="Rating"
-                      className="input input-bordered"
-                      required
-                    />
+                    <select
+                      name="rating"
+                      className="select select-bordered w-full "
+                    >
+                      <option value={"1"}>1</option>
+                      <option value={"2"}>2</option>
+                      <option value={"3"}>3</option>
+                      <option value={"4"}>4</option>
+                      <option value={"5"}>5</option>
+                    </select>
                   </div>
                 </div>
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">Short Description</span>
+                    <span className="label-text">Image URL</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Short Description"
+                    name="imageURL"
+                    placeholder="image URL"
                     className="input input-bordered"
                     required
                   />
@@ -106,34 +146,88 @@ const AddPaintingCraft = () => {
               <div className="md:flex items-center gap-5 w-full">
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">Craft Name</span>
+                    <span className="label-text">Craft Category</span>
                   </label>
-                  <select className="select select-bordered w-full ">
-                    <option disabled selected>
-                      Select One
+                  <select
+                    name="craftCategory"
+                    className="select select-bordered w-full "
+                  >
+                    <option value={"Landscape Painting"}>
+                      Landscape Painting
                     </option>
-                    <option>Landscape Painting</option>
-                    <option>Portrait Drawing</option>
-                    <option>Watercolour Painting</option>
-                    <option>Oil Painting</option>
-                    <option>Charcoal Sketching</option>
-                    <option>Cartoon Drawing</option>
+                    <option value={"Portrait Drawing"}>Portrait Drawing</option>
+                    <option value={"Watercolour Painting"}>
+                      Watercolour Painting
+                    </option>
+                    <option value={"Oil Painting"}>Oil Painting</option>
+                    <option value={"Charcoal Sketching"}>
+                      Charcoal Sketching
+                    </option>
+                    <option value={"Cartoon Drawing"}>Cartoon Drawing</option>
                   </select>
                 </div>
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">Short Description</span>
+                    <span className="label-text">Stock Status </span>
+                  </label>
+                  <select
+                    name="stockStatus"
+                    required
+                    className="select select-bordered w-full "
+                  >
+                    <option value={"In Stock"}>In stock</option>
+                    <option value={"Out Of Stock"}>Out of Stock</option>
+                  </select>
+                </div>
+              </div>
+              {/* row 4 */}
+              <div className="md:flex items-center gap-5 w-full">
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Customization</span>
+                  </label>
+                  <div className="flex gap-6">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="customization"
+                        value={"yes"}
+                        className="radio"
+                        defaultChecked={true}
+                      />{" "}
+                      <span>Yes</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="customization"
+                        value={"no"}
+                        className="radio"
+                      />{" "}
+                      <span>No</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Processing Time </span>
                   </label>
                   <input
-                    type="text"
-                    placeholder="Short Description"
+                    type="date"
+                    name="processingTime"
+                    placeholder="YYYY-MM-DD"
                     className="input input-bordered"
+                    id=""
                     required
                   />
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <input
+                  type="submit"
+                  value="Add Item"
+                  className="btn btn-neutral"
+                />
               </div>
             </form>
           </div>
