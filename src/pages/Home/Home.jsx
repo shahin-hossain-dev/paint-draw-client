@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar/Navbar";
+import Banner from "../../components/Banner/Banner";
 
 const Home = () => {
   const [selectedMode, setSelectedMood] = useState(false);
@@ -27,6 +28,7 @@ const Home = () => {
         setSelectedMood={setSelectedMood}
         selectedMode={selectedMode}
       />
+      <Banner />
     </div>
   );
 };
