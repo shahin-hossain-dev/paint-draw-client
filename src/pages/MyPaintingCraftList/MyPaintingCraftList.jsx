@@ -7,9 +7,9 @@ import { FaAngleDown } from "react-icons/fa";
 
 const MyPaintingCraftList = () => {
   const { user } = useContext(AuthContext);
-  const [yesItems, setYesItems] = useState([]);
-  const [noItems, setNoItems] = useState([]);
+
   const [paintingCrafts, setPaintingCrafts] = useState([]);
+  const [filterItems, setFilterItems] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/my-crafts?email=${user?.email}`)
@@ -26,31 +26,21 @@ const MyPaintingCraftList = () => {
   //     };
   //     fetchData();
   //   });
-  console.log(yesItems);
-  console.log(noItems);
+  useEffect(() => {
+    setFilterItems(paintingCrafts);
+  }, [paintingCrafts]);
+
   const handleYesFilter = () => {
     const noCustomization = paintingCrafts.filter(
-      (paintingCraft) => paintingCraft.customization === "no"
-    );
-    setNoItems(noCustomization);
-
-    const yesCustomization = paintingCrafts.filter(
       (paintingCraft) => paintingCraft.customization === "yes"
     );
-    setYesItems(yesCustomization);
-    setPaintingCrafts(yesItems);
+    setFilterItems(noCustomization);
   };
   const handleNoFilter = () => {
-    const yesCustomization = paintingCrafts.filter(
-      (paintingCraft) => paintingCraft.customization === "yes"
-    );
-    setYesItems(yesCustomization);
-
     const noCustomization = paintingCrafts.filter(
       (paintingCraft) => paintingCraft.customization === "no"
     );
-    setNoItems(noCustomization);
-    setPaintingCrafts(noItems);
+    setFilterItems(noCustomization);
   };
   return (
     <div>
@@ -76,7 +66,7 @@ const MyPaintingCraftList = () => {
       </div>
       <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {paintingCrafts.map((paintingCraft) => (
+          {filterItems.map((paintingCraft) => (
             <MyPaintingCraft
               key={paintingCraft._id}
               paintingCraft={paintingCraft}
