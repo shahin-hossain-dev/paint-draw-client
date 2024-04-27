@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../shared/Navbar/Navbar";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const AddPaintingCraft = () => {
   const { user } = useContext(AuthContext);
-  console.log(user.displayName);
+  const [error, setError] = useState("");
+  // console.log(user.displayName);
   const handleAddCraft = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -20,6 +21,11 @@ const AddPaintingCraft = () => {
     const stockStatus = form.stockStatus.value;
     const customization = form.customization.value;
     const processingTime = form.processingTime.value;
+
+    setError("");
+    if (isNaN(parseInt(price))) {
+      return setError("Please give number value");
+    }
 
     const craftItem = {
       craftName,
@@ -130,9 +136,14 @@ const AddPaintingCraft = () => {
                       type="text"
                       name="price"
                       placeholder="Price"
-                      className="input input-bordered"
+                      className={
+                        error
+                          ? "input input-bordered border-red-600"
+                          : "input input-bordered"
+                      }
                       required
                     />
+                    <p className="text-red-600">{error}</p>
                   </div>
                   <div className="form-control  w-full ">
                     <label className="label">

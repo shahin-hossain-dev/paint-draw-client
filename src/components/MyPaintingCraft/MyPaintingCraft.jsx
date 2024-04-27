@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEdit, FaRegTrashAlt, FaStoreAlt } from "react-icons/fa";
 import { FaDollarSign, FaStar } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const MyPaintingCraft = ({ paintingCraft }) => {
   console.log(paintingCraft);
@@ -46,12 +47,14 @@ const MyPaintingCraft = ({ paintingCraft }) => {
             <p>{stockStatus}</p>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-warning">
-              <span className="flex items-center gap-2 ">
-                <FaEdit className="" />
-                <span>Update</span>
-              </span>
-            </button>
+            <Link to={`/update-painting-craft/${_id}`}>
+              <button className="btn btn-warning">
+                <span className="flex items-center gap-2 ">
+                  <FaEdit className="" />
+                  <span>Update</span>
+                </span>
+              </button>
+            </Link>
             <button className="btn btn-error">
               <span className="flex items-center gap-2 ">
                 <FaRegTrashAlt className="" />
