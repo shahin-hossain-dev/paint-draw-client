@@ -2,8 +2,9 @@ import React from "react";
 import { FaEdit, FaRegTrashAlt, FaStoreAlt } from "react-icons/fa";
 import { FaDollarSign, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const MyPaintingCraft = ({ paintingCraft }) => {
+const MyPaintingCraft = ({ paintingCraft, setFilterItems, filterItems }) => {
   //   console.log(paintingCraft);
   const {
     _id,
@@ -19,6 +20,37 @@ const MyPaintingCraft = ({ paintingCraft }) => {
     customization,
     processingTime,
   } = paintingCraft;
+
+  const handleDeleteCraft = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/craft/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Craft Item Deleted Successfully",
+                icon: "success",
+              });
+              const remaining = filterItems.filter(
+                (craftItems) => craftItems._id !== _id
+              );
+              setFilterItems(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <div className="grid grid-cols-3 bg-base-100 shadow-xl rounded-lg">
@@ -55,7 +87,10 @@ const MyPaintingCraft = ({ paintingCraft }) => {
                 </span>
               </button>
             </Link>
-            <button className="btn btn-error">
+            <button
+              onClick={() => handleDeleteCraft(_id)}
+              className="btn btn-error"
+            >
               <span className="flex items-center gap-2 ">
                 <FaRegTrashAlt className="" />
                 <span>Delete</span>

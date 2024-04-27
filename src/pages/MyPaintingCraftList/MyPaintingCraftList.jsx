@@ -70,6 +70,8 @@ const MyPaintingCraftList = () => {
             <MyPaintingCraft
               key={paintingCraft._id}
               paintingCraft={paintingCraft}
+              filterItems={filterItems}
+              setFilterItems={setFilterItems}
             ></MyPaintingCraft>
           ))}
         </div>
