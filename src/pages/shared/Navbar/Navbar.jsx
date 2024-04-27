@@ -66,8 +66,9 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost hover:bg-neutral btn-circle flex justify-center items-center  avatar tooltip tooltip-bottom"
-                data-tip={user && user?.displayName}
+                className="btn btn-ghost hover:bg-neutral btn-circle flex justify-center items-center  avatar tooltip tooltip-bottom dropdown dropdown-hover "
+
+                // data-tip={user && user?.displayName}
               >
                 <div className="w-10 rounded-full">
                   <img
@@ -75,8 +76,19 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
                     src={(user && user?.photoURL) || userImg}
                   />
                 </div>
+                {user && (
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] top-11 -left-12 text-neutral menu p-2 shadow bg-base-100 rounded-lg w-52"
+                  >
+                    <li>
+                      <button>Logout</button>
+                    </li>
+                  </ul>
+                )}
               </div>
             </div>
+            <span>{user && user?.displayName}</span>
           </div>
           <div>
             {darkModeBtn && (
@@ -125,7 +137,7 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
               alt=""
             />
           </div>
-          <div className="  gap-5 items-center navbar-center hidden md:flex">
+          <div className="gap-5 items-center navbar-center hidden md:flex">
             {links}
           </div>
 
