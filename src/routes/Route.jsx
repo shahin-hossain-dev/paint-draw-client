@@ -8,6 +8,7 @@ import AddPaintingCraft from "../pages/AddPaintingCraft/AddPaintingCraft";
 import PaintingCraftDetails from "../pages/PaintingCraftDetails/PaintingCraftDetails";
 import PrivateRoute from "./PrivateRoute";
 import AllArtCrafts from "../pages/AllArtCrafts/AllArtCrafts";
+import MyPaintingCraftList from "../pages/MyPaintingCraftList/MyPaintingCraftList";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
         path: "/all-painting-craft",
         element: <AllArtCrafts />,
         loader: () => fetch("http://localhost:5000/crafts"),
+      },
+      {
+        path: "/my-painting-craft-list",
+        element: (
+          <PrivateRoute>
+            <MyPaintingCraftList />
+          </PrivateRoute>
+        ),
       },
     ],
   },

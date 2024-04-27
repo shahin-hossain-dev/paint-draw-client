@@ -5,7 +5,7 @@ const PaintingCrafts = () => {
   const [crafts, setCrafts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/crafts")
+    fetch("http://localhost:5000/crafts/some-data")
       .then((res) => res.json())
       .then((data) => setCrafts(data));
   }, []);
