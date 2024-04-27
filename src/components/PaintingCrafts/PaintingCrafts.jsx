@@ -1,6 +1,15 @@
-import React from "react";
-import { Fade, Flip, Hinge, Roll, Slide } from "react-awesome-reveal";
+import React, { useEffect, useState } from "react";
+import { Slide } from "react-awesome-reveal";
+import PaintingCraft from "../PaintingCraft/PaintingCraft";
 const PaintingCrafts = () => {
+  const [crafts, setCrafts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/crafts")
+      .then((res) => res.json())
+      .then((data) => setCrafts(data));
+  }, []);
+
   return (
     <div>
       <div className="mt-12 md:mt-24 text-center space-y-4 md:w-1/2 mx-auto">
@@ -19,6 +28,12 @@ const PaintingCrafts = () => {
             creativity.
           </p>
         </Slide>
+      </div>
+      {/* craft content */}
+      <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {crafts.map((craft) => (
+          <PaintingCraft key={craft._id} craft={craft}></PaintingCraft>
+        ))}
       </div>
     </div>
   );

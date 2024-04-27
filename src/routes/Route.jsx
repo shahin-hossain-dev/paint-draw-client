@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AddPaintingCraft from "../pages/AddPaintingCraft/AddPaintingCraft";
+import PaintingCraftDetails from "../pages/PaintingCraftDetails/PaintingCraftDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ const router = createBrowserRouter([
       {
         path: "/add-painting-craft",
         element: <AddPaintingCraft />,
+      },
+      {
+        path: "/craft-details/:id",
+        element: <PaintingCraftDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/craft/${params.id}`),
       },
     ],
   },

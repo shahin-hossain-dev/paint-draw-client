@@ -90,7 +90,7 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
           </div>
         </div>
       </div>
-      <div className="md:px-5 ">
+      <div className="md:px-5">
         <div className="navbar">
           <div className="navbar-start ">
             <div className="dropdown">

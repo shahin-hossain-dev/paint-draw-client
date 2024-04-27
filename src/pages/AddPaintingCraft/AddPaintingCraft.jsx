@@ -94,7 +94,7 @@ const AddPaintingCraft = () => {
                     <span className="label-text">User Email</span>
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     name="email"
                     placeholder="User Email"
                     className="input input-bordered"
@@ -231,7 +231,7 @@ const AddPaintingCraft = () => {
                     <span className="label-text">Processing Time </span>
                   </label>
                   <input
-                    type="date"
+                    type="datetime-local"
                     name="processingTime"
                     placeholder="YYYY-MM-DD"
                     className="input input-bordered"
