@@ -2,12 +2,13 @@ import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Navbar from "../shared/Navbar/Navbar";
+import Swal from "sweetalert2";
 
 const PaintingCraftUpdate = () => {
-  const { user } = useContext(AuthContext);
   const [error, setError] = useState("");
   const paintingCraft = useLoaderData();
   const {
+    _id,
     craftName,
     shortDescription,
     email,
@@ -41,7 +42,7 @@ const PaintingCraftUpdate = () => {
       return setError("Please give number value");
     }
 
-    const craftItem = {
+    const updateCraftItem = {
       craftName,
       shortDescription,
       email,
@@ -55,7 +56,22 @@ const PaintingCraftUpdate = () => {
       processingTime,
     };
 
-    fetch(`http://localhost:5000/craft/${_id}`);
+    fetch(`http://localhost:5000/craft/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateCraftItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Craft Item Updated Successfully",
+            icon: "success",
+          });
+        }
+      });
   };
   return (
     <div>
@@ -64,7 +80,7 @@ const PaintingCraftUpdate = () => {
         <div className="flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-2xl font-bold text-center">
-              Update Craft Items
+              Update Craft Item
             </h1>
           </div>
           <div className=" shrink-0 w-full ">
@@ -257,6 +273,7 @@ const PaintingCraftUpdate = () => {
                   <input
                     type="datetime-local"
                     name="processingTime"
+                    defaultValue={processingTime}
                     placeholder="YYYY-MM-DD"
                     className="input input-bordered"
                     id=""

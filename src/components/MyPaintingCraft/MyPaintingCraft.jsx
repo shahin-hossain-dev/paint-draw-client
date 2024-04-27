@@ -4,7 +4,7 @@ import { FaDollarSign, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const MyPaintingCraft = ({ paintingCraft }) => {
-  console.log(paintingCraft);
+  //   console.log(paintingCraft);
   const {
     _id,
     craftName,
