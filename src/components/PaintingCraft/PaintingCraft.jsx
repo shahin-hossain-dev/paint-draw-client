@@ -1,6 +1,6 @@
 import { BiCategoryAlt } from "react-icons/bi";
 import { FaStoreAlt } from "react-icons/fa";
-import { FaDollarSign, FaFirstOrderAlt, FaStar } from "react-icons/fa6";
+import { FaDollarSign, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const PaintingCraft = ({ craft }) => {
