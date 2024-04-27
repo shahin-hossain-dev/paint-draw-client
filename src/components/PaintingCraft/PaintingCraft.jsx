@@ -4,7 +4,6 @@ import { FaDollarSign, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const PaintingCraft = ({ craft }) => {
-  console.log(craft);
   const {
     _id,
     craftName,
@@ -28,7 +27,7 @@ const PaintingCraft = ({ craft }) => {
           className="hover:scale-150 duration-500"
         />
       </figure>
-      <div className="card-body p-4 ">
+      <div className="card-body  p-4 " data-theme="light">
         <h2 className="card-title font-exo">{craftName}</h2>
         <div className="flex items-center gap-2 text-gray-500">
           <FaStoreAlt className="text-text-neutral" />

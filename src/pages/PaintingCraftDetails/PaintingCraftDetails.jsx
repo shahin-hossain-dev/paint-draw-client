@@ -5,14 +5,13 @@ import { FaDollarSign, FaStar } from "react-icons/fa6";
 import coverImg from "../../assets/slider1.jpg";
 import moment from "moment";
 
+export const background = {
+  backgroundImage: `linear-gradient(to right, #00000099, #00000099),url(${coverImg})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  backgroundPosition: "top",
+};
 const PaintingCraftDetails = () => {
-  // console.log(estate);
-  const background = {
-    backgroundImage: `linear-gradient(to right, #00000099, #00000099),url(${coverImg})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "top",
-  };
   //   enter page to view from top
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,7 +51,7 @@ const PaintingCraftDetails = () => {
           <div className="hero-content gap-10 flex-col lg:flex-row">
             <img src={imageURL} className="max-w-sm rounded-lg shadow-2xl" />
             <div>
-              <div className="flex items-center ">
+              <div className="flex items-center mb-3">
                 <FaDollarSign className="text-5xl px-0 " />
                 <h3 className="text-5xl font-bold">{price}</h3>
               </div>
@@ -72,7 +71,7 @@ const PaintingCraftDetails = () => {
               </div>
               <div className="flex items-center gap-2">
                 <h4 className="font-semibold">Customization:</h4>
-                <p>{customization}</p>
+                <p>{customization === "yes" ? "Yes" : "No"}</p>
               </div>
               <div className="flex items-center gap-2">
                 <h4 className="font-semibold">Processing Time:</h4>

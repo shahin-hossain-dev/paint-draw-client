@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navbar from "../shared/Navbar/Navbar";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -7,12 +7,12 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { googleLogin, githubLogin, userLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
-
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location?.state || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -27,7 +27,7 @@ const Login = () => {
             title: "Login Successfully",
             icon: "success",
           });
-          navigate("/");
+          navigate(from);
         }
       })
       .catch((error) => {
@@ -48,6 +48,7 @@ const Login = () => {
             title: "Login Successfully",
             icon: "success",
           });
+          navigate(from);
         }
       })
       .catch((error) => {
@@ -64,6 +65,7 @@ const Login = () => {
             title: "Login Successfully",
             icon: "success",
           });
+          navigate(from);
         }
       })
       .catch((error) => {
