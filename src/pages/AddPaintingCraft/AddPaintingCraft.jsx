@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../shared/Navbar/Navbar";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddPaintingCraft = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user.displayName);
   const handleAddCraft = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,7 +16,7 @@ const AddPaintingCraft = () => {
     const price = form.price.value;
     const rating = form.rating.value;
     const imageURL = form.imageURL.value;
-    const craftCategory = form.craftCategory.value;
+    const subcategory_name = form.craftCategory.value;
     const stockStatus = form.stockStatus.value;
     const customization = form.customization.value;
     const processingTime = form.processingTime.value;
@@ -26,7 +29,7 @@ const AddPaintingCraft = () => {
       price,
       rating,
       imageURL,
-      craftCategory,
+      subcategory_name,
       stockStatus,
       customization,
       processingTime,
@@ -96,6 +99,7 @@ const AddPaintingCraft = () => {
                   <input
                     type="email"
                     name="email"
+                    defaultValue={user?.email}
                     placeholder="User Email"
                     className="input input-bordered"
                     required
@@ -108,6 +112,7 @@ const AddPaintingCraft = () => {
                   <input
                     type="text"
                     name="userName"
+                    defaultValue={user?.displayName}
                     placeholder="User Name"
                     className="input input-bordered"
                     required

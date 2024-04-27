@@ -13,7 +13,7 @@ const PaintingCraft = ({ craft }) => {
     price,
     rating,
     imageURL,
-    craftCategory,
+    subcategory_name,
     stockStatus,
     customization,
     processingTime,
@@ -37,7 +37,7 @@ const PaintingCraft = ({ craft }) => {
         <div className="flex items-center justify-between text-gray-500">
           <div className="flex items-center gap-2">
             <BiCategoryAlt className="text-neutral" />
-            <p>{craftCategory}</p>
+            <p>{subcategory_name}</p>
           </div>
           <div className="flex items-center gap-2 ">
             <FaStar className="text-[#FFA534]" />

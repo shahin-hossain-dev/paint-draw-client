@@ -5,8 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const AllArtCrafts = () => {
   const allCraft = useLoaderData();
-  const [craftIdCount, setCraftIdCount] = useState(0);
-  useEffect(() => {}, []);
+
   return (
     <div>
       <Navbar />
@@ -38,7 +37,7 @@ const AllArtCrafts = () => {
                 <tr key={craft._id}>
                   <th>{idx + 1}</th>
                   <td>{craft.craftName}</td>
-                  <td>{craft.craftCategory}</td>
+                  <td>{craft.subcategory_name}</td>
                   <td>{craft.stockStatus}</td>
                   <td>{craft.userName}</td>
                   <td>

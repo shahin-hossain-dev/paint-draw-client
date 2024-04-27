@@ -29,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-painting-craft",
-        element: <AddPaintingCraft />,
+        element: (
+          <PrivateRoute>
+            <AddPaintingCraft />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/craft-details/:id",

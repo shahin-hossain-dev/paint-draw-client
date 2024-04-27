@@ -27,7 +27,7 @@ const PaintingCraftDetails = () => {
     price,
     rating,
     imageURL,
-    craftCategory,
+    subcategory_name,
     stockStatus,
     customization,
     processingTime,
@@ -59,7 +59,7 @@ const PaintingCraftDetails = () => {
               <p className="py-6">{shortDescription}</p>
               <div className="flex items-center gap-2">
                 <h4 className="font-semibold">Craft Category:</h4>
-                <p>{craftCategory}</p>
+                <p>{subcategory_name}</p>
               </div>
               <div className="flex items-center gap-2">
                 <h4 className="font-semibold">Stock Status:</h4>
