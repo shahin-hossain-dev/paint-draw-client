@@ -3,6 +3,8 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { FaStoreAlt } from "react-icons/fa";
 import { FaDollarSign, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { MdAccessTime } from "react-icons/md";
+import moment from "moment";
 
 const CategoryCraftCard = ({ craft }) => {
   const {
@@ -14,6 +16,7 @@ const CategoryCraftCard = ({ craft }) => {
     imageURL,
     subcategory_name,
     stockStatus,
+    processingTime,
   } = craft;
   return (
     <div className="card shadow-xl rounded-md  border">
@@ -32,9 +35,10 @@ const CategoryCraftCard = ({ craft }) => {
             : shortDescription.slice(0, 100)}
           ...
         </p>
+
         <div className="flex items-center gap-2 text-gray-500">
-          <FaStoreAlt className="text-text-neutral" />
-          <p>{stockStatus}</p>
+          <MdAccessTime className="text-text-neutral" />
+          <p>{moment(processingTime).format("LLL")}</p>
         </div>
 
         <div className="flex items-center justify-between text-gray-500">

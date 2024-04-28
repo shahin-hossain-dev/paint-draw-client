@@ -50,6 +50,8 @@ const PaintingCraftUpdate = () => {
       stockStatus,
       customization,
       processingTime,
+      email,
+      userName,
     };
 
     fetch(`http://localhost:5000/craft/${_id}`, {
