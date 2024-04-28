@@ -31,7 +31,7 @@ const Home = () => {
         selectedMode={selectedMode}
       />
       <Banner />
-      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto ">
+      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto pb-24">
         <PaintingCrafts />
         <PaintingCraftCategories />
       </div>
