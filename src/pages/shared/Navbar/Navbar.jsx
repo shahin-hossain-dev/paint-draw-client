@@ -79,16 +79,18 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
                 {user && (
                   <ul
                     tabIndex={0}
-                    className="dropdown-content z-[1] top-11 -left-12 text-neutral menu p-2 shadow bg-base-100 rounded-lg w-52"
+                    className="dropdown-content z-[1] top-11  text-neutral menu p-2 shadow bg-base-100 rounded-lg w-52"
                   >
                     <li>
-                      <button>Logout</button>
+                      <span>{user && user?.displayName}</span>
+                    </li>
+                    <li>
+                      <button onClick={handleLogout}>Logout</button>
                     </li>
                   </ul>
                 )}
               </div>
             </div>
-            <span>{user && user?.displayName}</span>
           </div>
           <div>
             {darkModeBtn && (

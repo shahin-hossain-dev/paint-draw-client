@@ -64,7 +64,7 @@ const MyPaintingCraftList = () => {
           </ul>
         </details>
       </div>
-      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto mt-12">
+      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto mt-12 mb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {filterItems.map((paintingCraft) => (
             <MyPaintingCraft

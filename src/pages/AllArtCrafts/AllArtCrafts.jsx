@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar/Navbar";
 import { background } from "../PaintingCraftDetails/PaintingCraftDetails";
 import { Link, useLoaderData } from "react-router-dom";
@@ -10,14 +9,14 @@ const AllArtCrafts = () => {
     <div>
       <Navbar />
       <div
-        className="w-full h-[200px] md:h-[400px] relative"
+        className="w-full h-[200px] md:h-[400px] relative "
         style={background}
       >
         <div className="w-full font-exo text-center text-2xl md:text-3xl text-white absolute top-1/2 -translate-y-1/2  left-1/2 -translate-x-1/2">
           <p className="mb-5 font-medium"> All Painting Craft Items</p>
         </div>
       </div>
-      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto mt-12">
+      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto mt-12 mb-12">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
