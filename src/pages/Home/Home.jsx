@@ -4,6 +4,7 @@ import Banner from "../../components/Banner/Banner";
 import PaintingCrafts from "../../components/PaintingCrafts/PaintingCrafts";
 import PaintingCraftCategories from "../../components/PaintingCraftCategories/PaintingCraftCategories";
 import FeaturedCollections from "../../components/FeaturedCollections/FeaturedCollections";
+import AskQuestions from "../../components/AskQuestions/AskQuestions";
 
 const Home = () => {
   const [selectedMode, setSelectedMood] = useState(false);
@@ -36,6 +37,7 @@ const Home = () => {
         <PaintingCrafts />
         <PaintingCraftCategories />
         <FeaturedCollections />
+        <AskQuestions />
       </div>
     </div>
   );
