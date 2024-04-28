@@ -1,8 +1,22 @@
-# React + Vite
+# Paint Draw Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live Paint Draw App
 
-Currently, two official plugins are available:
+- [Paint Draw](https://paint-draw-f0427.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Here is the most important key features is this app.
+
+- This is a React single page application.
+- User authentication systems with Firebase.
+- Private routes feature, access for only logged in user.
+- Dynamic route for painting craft details view
+- Data get from Server Side
+- CRUD operation of painting craft data.
+- Backend using Express JS & MongoDB database
+
+### Packages use in the project
+
+- React simple typewriter
+- React Awesome reveal
+- Moment JS
+- React Icon
