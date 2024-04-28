@@ -27,8 +27,6 @@ const PaintingCraftUpdate = () => {
     const form = e.target;
     const craftName = form.craftName.value;
     const shortDescription = form.shortDescription.value;
-    const email = form.email.value;
-    const userName = form.userName.value;
     const price = form.price.value;
     const rating = form.rating.value;
     const imageURL = form.imageURL.value;
@@ -45,8 +43,6 @@ const PaintingCraftUpdate = () => {
     const updateCraftItem = {
       craftName,
       shortDescription,
-      email,
-      userName,
       price,
       rating,
       imageURL,
@@ -115,7 +111,7 @@ const PaintingCraftUpdate = () => {
                 </div>
               </div>
               {/* row 2 */}
-              <div className="md:flex items-center gap-5">
+              {/* <div className="md:flex items-center gap-5">
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text">User Email</span>
@@ -142,7 +138,7 @@ const PaintingCraftUpdate = () => {
                     required
                   />
                 </div>
-              </div>
+              </div> */}
               {/* row 3 */}
               <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 w-full">
                 <div className="grid grid-cols-2 gap-3 w-full">

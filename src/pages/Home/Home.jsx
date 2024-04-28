@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar/Navbar";
 import Banner from "../../components/Banner/Banner";
 import PaintingCrafts from "../../components/PaintingCrafts/PaintingCrafts";
+import PaintingCraftCategories from "../../components/PaintingCraftCategories/PaintingCraftCategories";
 
 const Home = () => {
   const [selectedMode, setSelectedMood] = useState(false);
@@ -32,6 +33,7 @@ const Home = () => {
       <Banner />
       <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto ">
         <PaintingCrafts />
+        <PaintingCraftCategories />
       </div>
     </div>
   );

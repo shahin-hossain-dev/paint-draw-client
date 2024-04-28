@@ -97,34 +97,7 @@ const AddPaintingCraft = () => {
                 </div>
               </div>
               {/* row 2 */}
-              <div className="md:flex items-center gap-5">
-                <div className="form-control w-full">
-                  <label className="label">
-                    <span className="label-text">User Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    defaultValue={user?.email}
-                    placeholder="User Email"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control w-full">
-                  <label className="label">
-                    <span className="label-text">User Name</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="userName"
-                    defaultValue={user?.displayName}
-                    placeholder="User Name"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-              </div>
+
               {/* row 3 */}
               <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 w-full">
                 <div className="grid grid-cols-2 gap-3 w-full">
@@ -256,6 +229,36 @@ const AddPaintingCraft = () => {
                   />
                 </div>
               </div>
+              {/* row 5 */}
+              <div className="md:flex items-center gap-5">
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">User Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    defaultValue={user?.email}
+                    placeholder="User Email"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">User Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="userName"
+                    defaultValue={user?.displayName}
+                    placeholder="User Name"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+              </div>
+
               <div className="form-control mt-6">
                 <input
                   type="submit"
