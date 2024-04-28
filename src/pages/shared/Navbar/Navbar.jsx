@@ -7,7 +7,7 @@ import logoForDark from "../../../assets/logo-02.png";
 import userImg from "../../../assets/user.jpg";
 import { FaPhone } from "react-icons/fa6";
 import Swal from "sweetalert2";
-
+import { Typewriter } from "react-simple-typewriter";
 const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
   const { user, logout } = useContext(AuthContext);
   const [darkModeBtn, setDarkModeBtn] = useState(null);

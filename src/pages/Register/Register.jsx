@@ -5,6 +5,7 @@ import auth from "../../firebase/firebase.config";
 import { AuthContext } from "../../providers/AuthProvider";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
+import { Typewriter } from "react-simple-typewriter";
 
 const Register = () => {
   const { user, createUser, updateUserProfile } = useContext(AuthContext);
@@ -60,7 +61,19 @@ const Register = () => {
       <div className=" flex justify-center items-center px-5 md:px-0 min-h-screen mt-5 pb-5">
         <div className="card shrink-0 w-full max-w-sm shadow-2xl border">
           <h1 className="text-2xl my-5 font-exo text-center font-bold ">
-            Register an Account
+            Register an {""}
+            <span style={{ color: "red", fontWeight: "bold" }}>
+              {/* Style will be inherited from the parent element */}
+              <Typewriter
+                words={["Account", "User"]}
+                loop={0}
+                cursor
+                cursorStyle="_"
+                typeSpeed={200}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
           </h1>
           <form onSubmit={handleRegister} className="card-body  pt-0">
             <div className="form-control">
