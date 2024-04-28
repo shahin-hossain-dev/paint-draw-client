@@ -1,13 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PaintingCraftCategory = ({ craftCategory }) => {
   //   console.log(craftCategory);
   const { image, subcategory_name, origins, key_elements } = craftCategory;
-  const handleCategoryCraft = (subCategory) => {
-    console.log(subCategory);
-  };
+
   return (
-    <div onClick={() => handleCategoryCraft(subcategory_name)}>
+    <Link to={`/craft-category/${subcategory_name}`}>
       <div className="card  shadow-xl image-full ">
         <figure>
           <img src={image} alt="category image" />
@@ -24,7 +23,7 @@ const PaintingCraftCategory = ({ craftCategory }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

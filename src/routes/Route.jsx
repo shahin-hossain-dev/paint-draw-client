@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllArtCrafts from "../pages/AllArtCrafts/AllArtCrafts";
 import MyPaintingCraftList from "../pages/MyPaintingCraftList/MyPaintingCraftList";
 import PaintingCraftUpdate from "../pages/PaintingCraftUpdate/PaintingCraftUpdate";
+import CategoryPaintingCrafts from "../pages/CategoryPaintingCrafts/CategoryPaintingCrafts";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,12 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/craft/${params.id}`),
+      },
+      {
+        path: "/craft-category/:category",
+        element: <CategoryPaintingCrafts />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/craft-category/${params.category}`),
       },
     ],
   },
