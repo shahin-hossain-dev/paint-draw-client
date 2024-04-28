@@ -48,7 +48,7 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
   return (
     <div className=" w-full shadow-lg">
       <div className="py-2 px-5 md:px-10 bg-[#002B45] text-white  flex items-center justify-between gap-10">
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           <button className="border border-white px-1">US</button>
           <button className="border border-white px-1">BN</button>
         </div>

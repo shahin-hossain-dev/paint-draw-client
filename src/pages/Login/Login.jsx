@@ -4,6 +4,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navbar from "../shared/Navbar/Navbar";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Typewriter } from "react-simple-typewriter";
 const Login = () => {
   const { googleLogin, githubLogin, userLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -78,7 +79,19 @@ const Login = () => {
       <div className=" flex justify-center items-center px-5 md:px-0 min-h-screen  pb-5">
         <div className="card shrink-0 w-full max-w-sm shadow-2xl  border">
           <h1 className="text-2xl font-exo mt-5 text-center font-bold  ">
-            Login now!
+            Login with {""}
+            <span style={{ color: "red", fontWeight: "bold" }}>
+              {/* Style will be inherited from the parent element */}
+              <Typewriter
+                words={["Email & Pass", "Google", "Github"]}
+                loop={0}
+                cursor
+                cursorStyle="_"
+                typeSpeed={200}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
           </h1>
           <form onSubmit={handleLogin} className="card-body  pt-0">
             <div className="form-control">
