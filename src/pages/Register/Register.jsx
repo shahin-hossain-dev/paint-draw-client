@@ -6,11 +6,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { Typewriter } from "react-simple-typewriter";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { user, createUser, updateUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
-
+  const [passwordShow, setPasswordShow] = useState(false);
+  const [eyeShow, setEyeShow] = useState(false);
   const navigate = useNavigate("");
 
   const handleRegister = (e) => {
@@ -28,7 +30,7 @@ const Register = () => {
       return;
     }
     if (!/^(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)) {
-      setError("At least one Uppercase or Lowercase character");
+      return setError("At least one Uppercase & Lowercase character");
     }
     // create user with firebase
     createUser(email, password)
@@ -112,17 +114,27 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text ">Password</span>
               </label>
               <input
-                type="password"
+                type={passwordShow ? "text" : "password"}
                 name="password"
                 placeholder="Password"
+                onChange={(e) => setEyeShow(e.target.value)}
                 className="input input-bordered"
                 required
               />
+              {/* eye button */}
+              {eyeShow && (
+                <span
+                  onClick={() => setPasswordShow(!passwordShow)}
+                  className="text-2xl cursor-pointer absolute right-3 top-1/2 translate-y-1 "
+                >
+                  {passwordShow ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              )}
             </div>
 
             <div className="form-control mt-6">
