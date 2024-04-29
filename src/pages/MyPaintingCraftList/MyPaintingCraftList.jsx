@@ -37,10 +37,10 @@ const MyPaintingCraftList = () => {
   }, [paintingCrafts]);
 
   const handleYesFilter = () => {
-    const noCustomization = paintingCrafts.filter(
+    const yesCustomization = paintingCrafts.filter(
       (paintingCraft) => paintingCraft.customization === "yes"
     );
-    setFilterItems(noCustomization);
+    setFilterItems(yesCustomization);
   };
   const handleNoFilter = () => {
     const noCustomization = paintingCrafts.filter(
