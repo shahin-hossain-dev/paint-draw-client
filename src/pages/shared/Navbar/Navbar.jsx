@@ -85,7 +85,7 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
                 {user && (
                   <ul
                     tabIndex={0}
-                    className="dropdown-content z-[1] top-11  text-neutral menu p-2 shadow bg-base-100 rounded-lg w-52"
+                    className="dropdown-content z-[10] top-11  text-neutral menu p-2 shadow bg-base-100 rounded-lg w-52"
                   >
                     <li>
                       <span>{user && user?.displayName}</span>
@@ -152,9 +152,9 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
           <div className="navbar-end">
             {user ? (
               <div className="flex justify-center">
-                <button onClick={handleLogout} className="btn btn-neutral">
+                {/* <button onClick={handleLogout} className="btn btn-neutral">
                   Logout
-                </button>
+                </button> */}
               </div>
             ) : (
               <div className="flex gap-3">

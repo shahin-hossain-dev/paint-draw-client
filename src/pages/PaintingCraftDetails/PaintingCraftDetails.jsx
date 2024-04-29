@@ -48,8 +48,8 @@ const PaintingCraftDetails = () => {
       {/* craft Details */}
       <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto ">
         <div className="hero min-h-screen">
-          <div className="hero-content gap-10 flex-col lg:flex-row">
-            <img src={imageURL} className=" rounded-lg shadow-2xl" />
+          <div className="hero-content justify-between gap-10 flex-col lg:flex-row">
+            <img src={imageURL} className=" w-full rounded-lg shadow-2xl" />
             <div>
               <div className="flex items-center mb-3">
                 <FaDollarSign className="text-5xl px-0 " />

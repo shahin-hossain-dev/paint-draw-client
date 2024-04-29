@@ -56,14 +56,14 @@ const MyPaintingCraft = ({ paintingCraft, setFilterItems, filterItems }) => {
   };
   return (
     <div>
-      <div className="grid grid-cols-3 bg-base-100 shadow-xl rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-3 bg-base-100 shadow-xl rounded-lg">
         <img
           src={imageURL}
-          className="object-cover h-full col-span-1 rounded-l-lg"
-          alt="Movie"
+          className="object-cover object-center h-full col-span-1 rounded-t-lg lg:rounded-tr-none md:rounded-l-lg"
+          alt="Craft Items"
         />
 
-        <div className="card-body p-3 col-span-2">
+        <div className="card-body p-3 md:col-span-2">
           <h2 className="card-title">{craftName}</h2>
           <div className="flex items-center ">
             <FaDollarSign className="text-2xl " />
