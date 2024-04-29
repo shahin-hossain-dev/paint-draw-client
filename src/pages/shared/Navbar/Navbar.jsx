@@ -1,17 +1,42 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 import logoForLight from "../../../assets/logo-01.png";
 import logoForDark from "../../../assets/logo-02.png";
 import userImg from "../../../assets/user.jpg";
 import Swal from "sweetalert2";
-const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
+const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  const [darkModeBtn, setDarkModeBtn] = useState(null);
-  const [logo, setLogo] = useState(true);
-  const location = useLocation();
-  // console.log(isDarkMode);
+  const [darkMode, setDarkMode] = useState(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.querySelector("html").setAttribute("data-theme", "dark");
+    } else {
+      document.querySelector("html").setAttribute("data-theme", "light");
+    }
+  }, [darkMode]);
+
+  console.log(darkMode);
+  const handleDarkMood = (e) => {
+    const toggle = e.target.checked;
+    if (toggle === true) {
+      localStorage.setItem("theme", "dark");
+      setDarkMode(true);
+    } else {
+      localStorage.setItem("theme", "light");
+      setDarkMode(false);
+    }
+  };
+
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -21,24 +46,6 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
         });
       })
       .catch((error) => error.message);
-  };
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (!location?.pathname[1]) {
-      setDarkModeBtn(true);
-    }
-  }, []);
-
-  const handleDarkMood = () => {
-    // console.log(e.target.checked);
-    if (localStorage.getItem("theme") === "light") {
-      localStorage.setItem("theme", "dark");
-      setLogo(false);
-    } else {
-      localStorage.setItem("theme", "light");
-      setLogo(true);
-    }
-    setDarkMood(!isDarkMode);
   };
 
   const links = (
@@ -88,10 +95,19 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
                     className="dropdown-content z-[10] top-11  text-neutral menu p-2 shadow bg-base-100 rounded-lg w-52"
                   >
                     <li>
-                      <span>{user && user?.displayName}</span>
+                      <span
+                        className={darkMode ? "text-white" : "text-neutral"}
+                      >
+                        {user && user?.displayName}
+                      </span>
                     </li>
                     <li>
-                      <button onClick={handleLogout}>Logout</button>
+                      <button
+                        className={darkMode ? "text-white" : "text-neutral"}
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 )}
@@ -99,16 +115,23 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
             </div>
           </div>
           <div>
-            {darkModeBtn && (
-              <label className="cursor-pointer label">
+            <label className="cursor-pointer label">
+              {darkMode ? (
                 <input
                   type="checkbox"
                   className="toggle"
-                  onChange={(e) => handleDarkMood(e)}
-                  defaultChecked={selectedMode ? true : false}
+                  onChange={handleDarkMood}
+                  defaultChecked={true}
                 />
-              </label>
-            )}
+              ) : (
+                <input
+                  type="checkbox"
+                  className="toggle"
+                  onChange={handleDarkMood}
+                  defaultChecked={false}
+                />
+              )}
+            </label>
           </div>
         </div>
       </div>
@@ -140,7 +163,7 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
               </ul>
             </div>
             <img
-              src={logo ? logoForLight : logoForDark}
+              src={darkMode ? logoForDark : logoForLight}
               className=" w-2/3 lg:w-[200px] ms-3 lg:ms-0"
               alt=""
             />

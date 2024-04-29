@@ -7,19 +7,14 @@ const PaintingCraft = ({ craft }) => {
   const {
     _id,
     craftName,
-    shortDescription,
-    email,
-    userName,
     price,
     rating,
     imageURL,
     subcategory_name,
     stockStatus,
-    customization,
-    processingTime,
   } = craft;
   return (
-    <div className="card shadow-xl rounded-md  border">
+    <div className="card shadow-xl rounded-md  ">
       <figure>
         <img
           src={imageURL}
@@ -27,7 +22,7 @@ const PaintingCraft = ({ craft }) => {
           className="hover:scale-150 duration-500"
         />
       </figure>
-      <div className="card-body  p-4 " data-theme="light">
+      <div className="card-body  p-4 ">
         <h2 className="card-title font-exo">{craftName}</h2>
         <div className="flex items-center gap-2 text-gray-500">
           <FaStoreAlt className="text-text-neutral" />

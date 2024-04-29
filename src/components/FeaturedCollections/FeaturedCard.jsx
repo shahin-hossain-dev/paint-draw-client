@@ -1,29 +1,15 @@
-import React from "react";
 import { BiCategoryAlt } from "react-icons/bi";
-import { FaDollarSign, FaStar, FaStoreAlt } from "react-icons/fa";
+import { FaDollarSign, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const FeaturedCard = ({ craft }) => {
-  const {
-    _id,
-    craftName,
-    shortDescription,
-    email,
-    userName,
-    price,
-    rating,
-    imageURL,
-    subcategory_name,
-    stockStatus,
-    customization,
-    processingTime,
-  } = craft;
+  const { _id, craftName, price, rating, imageURL, subcategory_name } = craft;
   return (
-    <div className=" shadow-xl  border">
+    <div className=" shadow-xl">
       <figure>
         <img src={imageURL} alt="Craft image" className="w-full" />
       </figure>
-      <div className="card-body  p-4 " data-theme="light">
+      <div className="card-body p-4 ">
         <h2 className="card-title font-exo">{craftName}</h2>
 
         <div className="flex items-center justify-between text-gray-500">

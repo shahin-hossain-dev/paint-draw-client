@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Slide } from "react-awesome-reveal";
+import { useEffect, useState } from "react";
 import FeaturedCard from "./FeaturedCard";
 
 const FeaturedCollections = () => {
