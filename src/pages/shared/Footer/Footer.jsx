@@ -9,6 +9,7 @@ import {
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa";
+import { FaGlobe } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="py-10  bg-[#002B45] ">
@@ -31,6 +32,16 @@ const Footer = () => {
             <span className="flex items-center gap-2">
               <MdOutlineEmail className="text-red-500" />
               <span>shahin.hossain.dev@gmail.com</span>
+            </span>
+            <span className="flex items-center gap-2">
+              <FaGlobe className="text-red-500" />
+              <Link
+                to={"https://paint-draw-f0427.web.app/"}
+                className="link link-hover"
+                target="_blank"
+              >
+                www.paindraw.com
+              </Link>
             </span>
           </div>
         </aside>
