@@ -234,7 +234,7 @@ const PaintingCraftUpdate = () => {
                     className="select select-bordered w-full "
                   >
                     <option value={"In Stock"}>In stock</option>
-                    <option value={"Out Of Stock"}>Out of Stock</option>
+                    <option value={"Made to Order"}>Made to Order</option>
                   </select>
                 </div>
               </div>
