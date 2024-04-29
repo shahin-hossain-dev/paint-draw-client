@@ -1,5 +1,7 @@
 # Paint Draw Project
 
+## Website Category: Painting and Drawing
+
 ### Live Paint Draw App
 
 - [Paint Draw](https://paint-draw-f0427.web.app/)

@@ -33,7 +33,10 @@ const Login = () => {
       })
       .catch((error) => {
         if (error.message.includes("invalid")) {
-          setError("User Email or Password Invalid");
+          Swal.fire({
+            icon: "error",
+            title: "Invalid Email or Password",
+          });
         } else {
           setError(error.message);
         }
