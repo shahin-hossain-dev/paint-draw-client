@@ -12,15 +12,28 @@ const Home = () => {
 
   useEffect(() => {
     if (isDarkMode) {
+      document.getElementById("home").setAttribute("data-theme", "light");
+      document.getElementById("home").className =
+        "text-black bg-[#ffffff] min-h-screen duration-200";
+      if (localStorage.getItem("theme") === "dark") {
+        document.getElementById("home").setAttribute("data-theme", "dark");
+        document.getElementById("home").className =
+          "text-white bg-[#212121] min-h-screen duration-200";
+        setSelectedMood(true);
+      }
+    } else if (localStorage.getItem("theme") === "dark") {
       document.getElementById("home").setAttribute("data-theme", "dark");
-      document.getElementById("home").classList =
+      document.getElementById("home").className =
         "text-white bg-[#212121] min-h-screen duration-200";
-      localStorage.setItem("theme", "dark");
+      setSelectedMood(true);
+    } else if (isDarkMode) {
+      document.getElementById("home").setAttribute("data-theme", "dark");
+      document.getElementById("home").className =
+        "text-white bg-[#212121] min-h-screen duration-200";
     } else {
       document.getElementById("home").setAttribute("data-theme", "light");
-      document.getElementById("home").classList =
+      document.getElementById("home").className =
         "text-black bg-[#ffffff] min-h-screen duration-200";
-      localStorage.setItem("theme", "light");
     }
   }, [isDarkMode]);
 

@@ -8,11 +8,12 @@ import userImg from "../../../assets/user.jpg";
 import { FaPhone } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { Typewriter } from "react-simple-typewriter";
-const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
+const Navbar = ({ isDarkMode, setDarkMood, selectedMode, setSelectedMood }) => {
   const { user, logout } = useContext(AuthContext);
   const [darkModeBtn, setDarkModeBtn] = useState(null);
+  const [logo, setLogo] = useState(true);
   const location = useLocation();
-
+  console.log(isDarkMode);
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -30,8 +31,15 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
     }
   }, []);
 
-  const handleDarkMood = (e) => {
+  const handleDarkMood = () => {
     // console.log(e.target.checked);
+    if (localStorage.getItem("theme") === "light") {
+      localStorage.setItem("theme", "dark");
+      setLogo(false);
+    } else {
+      localStorage.setItem("theme", "light");
+      setLogo(true);
+    }
     setDarkMood(!isDarkMode);
   };
 
@@ -97,9 +105,9 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
               <label className="cursor-pointer label">
                 <input
                   type="checkbox"
-                  className="toggle toggle-primary"
+                  className="toggle"
                   onChange={(e) => handleDarkMood(e)}
-                  {...isDarkMode}
+                  defaultChecked={selectedMode ? true : false}
                 />
               </label>
             )}
@@ -134,7 +142,7 @@ const Navbar = ({ isDarkMode, setDarkMood, setSelectedMood }) => {
               </ul>
             </div>
             <img
-              src={isDarkMode ? logoForDark : logoForLight}
+              src={logo ? logoForLight : logoForDark}
               className=" w-2/3 lg:w-[200px] ms-3 lg:ms-0"
               alt=""
             />
