@@ -46,16 +46,18 @@ const PaintingCraftDetails = () => {
         </div>
       </div>
       {/* craft Details */}
-      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto ">
+      <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto my-12">
         <div className="hero min-h-screen">
-          <div className="hero-content justify-between gap-10 flex-col lg:flex-row">
-            <img src={imageURL} className=" w-full rounded-lg shadow-2xl" />
+          <div className="grid grid-cols-1 md:grid-cols-2  place-items-center gap-10 flex-col lg:flex-row">
+            <img src={imageURL} className=" w-full  rounded-lg shadow-2xl" />
             <div>
               <div className="flex items-center mb-3">
                 <FaDollarSign className="text-5xl px-0 " />
                 <h3 className="text-5xl font-bold">{price}</h3>
               </div>
-              <h1 className="text-4xl font-semibold">{craftName}</h1>
+              <h1 className="text-2xl md:text-4xl font-semibold">
+                {craftName}
+              </h1>
               <p className="py-6">{shortDescription}</p>
               <div className="flex items-center gap-2">
                 <h4 className="font-semibold">Craft Category:</h4>

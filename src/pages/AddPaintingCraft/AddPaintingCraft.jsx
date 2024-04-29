@@ -60,10 +60,10 @@ const AddPaintingCraft = () => {
   return (
     <div>
       <Navbar />
-      <div className=" min-h-screen w-[90%] md:w-[90%] lg:w-[85%] mx-auto border mt-5 px-0 md:p-5">
+      <div className=" min-h-screen w-[90%] md:w-[90%] lg:w-[85%] mx-auto border my-12 px-0 md:p-5">
         <div className="flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-2xl font-bold text-center">
+            <h1 className="text-2xl font-bold text-center pt-3">
               Add New Craft Items
             </h1>
           </div>

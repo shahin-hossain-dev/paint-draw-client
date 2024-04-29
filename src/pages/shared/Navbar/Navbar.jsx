@@ -55,7 +55,7 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
     <div className=" w-full shadow-lg">
       <div className="py-2 px-5 md:px-10 bg-[#002B45] text-white  flex items-center justify-between gap-10">
         <div className="flex gap-2">
-          <button className="border border-white px-1">US</button>
+          <button className="border border-white px-1">EN</button>
           <button className="border border-white px-1">BN</button>
         </div>
         <div className="flex items-center gap-5">
@@ -119,7 +119,7 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
               <div tabIndex={0} role="button" className=" md:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-[#876445]"
+                  className="h-5 w-5 text-neutral"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -134,7 +134,7 @@ const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-5 shadow bg-white w-[200px] rounded-box "
+                className="menu menu-sm dropdown-content mt-3 z-[10] p-5 shadow bg-white w-[200px] rounded-box "
               >
                 {links}
               </ul>
