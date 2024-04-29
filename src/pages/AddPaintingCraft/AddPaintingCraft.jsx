@@ -40,7 +40,7 @@ const AddPaintingCraft = () => {
       customization,
       processingTime,
     };
-    fetch("http://localhost:5000/crafts", {
+    fetch("https://b9a10-server-side-shahin-hossain-dev.vercel.app/crafts", {
       method: "POST",
       headers: {
         "content-type": "application/json",

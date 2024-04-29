@@ -8,7 +8,9 @@ const PaintingCraftCategories = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/craft-categories")
+    fetch(
+      "https://b9a10-server-side-shahin-hossain-dev.vercel.app/craft-categories"
+    )
       .then((res) => res.json())
       .then((data) => {
         setCraftCategories(data);

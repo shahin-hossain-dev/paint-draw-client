@@ -32,9 +32,12 @@ const MyPaintingCraft = ({ paintingCraft, setFilterItems, filterItems }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/craft/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://b9a10-server-side-shahin-hossain-dev.vercel.app/craft/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

@@ -7,7 +7,9 @@ const PaintingCrafts = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/crafts/some-data")
+    fetch(
+      "https://b9a10-server-side-shahin-hossain-dev.vercel.app/crafts/some-data"
+    )
       .then((res) => res.json())
       .then((data) => {
         setCrafts(data);

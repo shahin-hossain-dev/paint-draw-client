@@ -5,7 +5,9 @@ const AskQuestions = () => {
   const [askQuestions, setAskQuestions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/ask-questions")
+    fetch(
+      "https://b9a10-server-side-shahin-hossain-dev.vercel.app/ask-questions"
+    )
       .then((res) => res.json())
       .then((data) => {
         setAskQuestions(data);

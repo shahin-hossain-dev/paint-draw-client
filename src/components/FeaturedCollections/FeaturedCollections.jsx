@@ -6,7 +6,7 @@ const FeaturedCollections = () => {
   const [crafts, setCrafts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/crafts")
+    fetch("https://b9a10-server-side-shahin-hossain-dev.vercel.app/crafts")
       .then((res) => res.json())
       .then((data) => {
         setCrafts(data);

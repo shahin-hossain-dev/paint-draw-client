@@ -5,15 +5,13 @@ import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 import logoForLight from "../../../assets/logo-01.png";
 import logoForDark from "../../../assets/logo-02.png";
 import userImg from "../../../assets/user.jpg";
-import { FaPhone } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { Typewriter } from "react-simple-typewriter";
-const Navbar = ({ isDarkMode, setDarkMood, selectedMode, setSelectedMood }) => {
+const Navbar = ({ isDarkMode, setDarkMood, selectedMode }) => {
   const { user, logout } = useContext(AuthContext);
   const [darkModeBtn, setDarkModeBtn] = useState(null);
   const [logo, setLogo] = useState(true);
   const location = useLocation();
-  console.log(isDarkMode);
+  // console.log(isDarkMode);
   const handleLogout = () => {
     logout()
       .then(() => {

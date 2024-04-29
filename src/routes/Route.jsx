@@ -46,12 +46,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/craft/${params.id}`),
+          fetch(
+            `https://b9a10-server-side-shahin-hossain-dev.vercel.app/craft/${params.id}`
+          ),
       },
       {
         path: "/all-painting-craft",
         element: <AllArtCrafts />,
-        loader: () => fetch("http://localhost:5000/crafts"),
+        loader: () =>
+          fetch(
+            "https://b9a10-server-side-shahin-hossain-dev.vercel.app/crafts"
+          ),
       },
       {
         path: "/my-painting-craft-list",
@@ -69,13 +74,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/craft/${params.id}`),
+          fetch(
+            `https://b9a10-server-side-shahin-hossain-dev.vercel.app/craft/${params.id}`
+          ),
       },
       {
         path: "/craft-category/:category",
         element: <CategoryPaintingCrafts />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/craft-category/${params.category}`),
+          fetch(
+            `https://b9a10-server-side-shahin-hossain-dev.vercel.app/craft-category/${params.category}`
+          ),
       },
     ],
   },

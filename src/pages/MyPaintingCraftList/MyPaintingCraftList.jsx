@@ -10,11 +10,17 @@ const MyPaintingCraftList = () => {
 
   const [paintingCrafts, setPaintingCrafts] = useState([]);
   const [filterItems, setFilterItems] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/my-crafts?email=${user?.email}`)
+    setLoading(true);
+    fetch(
+      `https://b9a10-server-side-shahin-hossain-dev.vercel.app/my-crafts?email=${user?.email}`
+    )
       .then((res) => res.json())
-      .then((data) => setPaintingCrafts(data));
+      .then((data) => {
+        setPaintingCrafts(data);
+        setLoading(false);
+      });
   }, []);
 
   //   const url = `http://localhost:5000/my-crafts?email=${user?.email}`;
@@ -65,16 +71,22 @@ const MyPaintingCraftList = () => {
         </details>
       </div>
       <div className="w-[90%] md:w-[90%] lg:w-[85%] mx-auto mt-12 mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {filterItems.map((paintingCraft) => (
-            <MyPaintingCraft
-              key={paintingCraft._id}
-              paintingCraft={paintingCraft}
-              filterItems={filterItems}
-              setFilterItems={setFilterItems}
-            ></MyPaintingCraft>
-          ))}
-        </div>
+        {loading ? (
+          <div className=" flex justify-center items-center">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {filterItems.map((paintingCraft) => (
+              <MyPaintingCraft
+                key={paintingCraft._id}
+                paintingCraft={paintingCraft}
+                filterItems={filterItems}
+                setFilterItems={setFilterItems}
+              ></MyPaintingCraft>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

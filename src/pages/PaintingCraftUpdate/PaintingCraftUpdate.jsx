@@ -54,13 +54,16 @@ const PaintingCraftUpdate = () => {
       userName,
     };
 
-    fetch(`http://localhost:5000/craft/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateCraftItem),
-    })
+    fetch(
+      `https://b9a10-server-side-shahin-hossain-dev.vercel.app/craft/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateCraftItem),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
